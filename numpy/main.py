@@ -143,3 +143,25 @@ plt.plot(41.5, 41.5 * a+b, '*b')
 #estimar valores para o futuro com a projeção da reta no mes 100
 plt.plot(100, 100 * a+b, '*r')
 plt.show()
+
+#gera valores inteiros aleatórios
+print(np.random.randint(low=40, high=100, size=100))
+
+#gerando valores de ponto flutuante aleatorios
+print(np.random.uniform(low=0.10, high=0.90, size=100))
+
+np.random.seed(84)
+coeficientes_angulares = np.random.uniform(low=0.10, high=0.90, size=100)
+
+norma2 = np.array([])
+for i in range(100):
+    norma2 = np.append(norma2, np.linalg.norm(Moscow-(coeficientes_angulares[i]*X+b)))
+
+#print(norma2)
+#print(coeficientes_angulares[1])
+
+dados = np.column_stack([norma2, coeficientes_angulares])
+print(dados)
+print(dados.shape)
+
+np.savetxt('dados.csv', dados, delimiter=',')
