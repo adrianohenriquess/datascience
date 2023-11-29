@@ -77,4 +77,26 @@ df_percentual_tipo = df_imoveis_nao_comerciais.Tipo.value_counts(normalize=True)
 df_apartamentos = df_imoveis_nao_comerciais.query('Tipo == "Apartamento"')
 print(df_apartamentos)
 
-#3ª parte
+#3ª parte tratar dados nulos
+print(df_apartamentos.isnull().sum())
+
+print(df_apartamentos.fillna(0))
+df_apartamentos = df_apartamentos.fillna(0)
+print(df_apartamentos.isnull().sum())
+
+#remover registros inconsistentes
+print(df_apartamentos.query('Valor == 0 | Condominio == 0'))
+registros_a_remover = df_apartamentos.query('Valor == 0 | Condominio == 0').index
+#remover linhas com o parametro axis = 0
+#inplace aplica as alterações sem precisar reatribuir a mesma
+#variavel
+df_apartamentos.drop(registros_a_remover, axis=0, inplace=True)
+print(df_apartamentos.query('Valor == 0 | Condominio == 0'))
+
+
+print(df_apartamentos.head())
+#removendo a coluna tipo que só tem um valor
+df_apartamentos.drop('Tipo', axis=1, inplace=True)
+print(df_apartamentos.head())
+
+#aplicar filtros
