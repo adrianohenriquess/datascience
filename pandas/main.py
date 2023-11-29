@@ -100,3 +100,19 @@ df_apartamentos.drop('Tipo', axis=1, inplace=True)
 print(df_apartamentos.head())
 
 #aplicar filtros
+print(df_apartamentos['Quartos'] == 1)
+selecao1 = df_apartamentos['Quartos'] == 1
+selecao2 = df_apartamentos['Valor'] < 1200
+print(df_apartamentos[selecao1])
+print(df_apartamentos[selecao2])
+
+selecao_final = (selecao1) & (selecao2)
+
+df_1 = df_apartamentos[selecao_final]
+
+selecao = ((df_apartamentos['Quartos'] >= 2)
+           & (df_apartamentos['Valor'] < 3000)
+           & (df_apartamentos['Area']  >   70))
+df_2 = df_apartamentos[selecao]
+print(df_1)
+print(df_2)
