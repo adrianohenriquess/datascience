@@ -116,3 +116,8 @@ selecao = ((df_apartamentos['Quartos'] >= 2)
 df_2 = df_apartamentos[selecao]
 print(df_1)
 print(df_2)
+
+#salvar os dados
+df_apartamentos.to_csv('dados_apartamentos.csv', index=False, sep=';')
+
+print(pd.read_csv('dados_apartamentos.csv', sep=';'))
