@@ -121,3 +121,7 @@ print(df_2)
 df_apartamentos.to_csv('dados_apartamentos.csv', index=False, sep=';')
 
 print(pd.read_csv('dados_apartamentos.csv', sep=';'))
+
+
+df_1.to_csv('filtro_1.csv', index=False, sep=";")
+df_2.to_csv('filtro_2.csv', index=False, sep=";")
