@@ -135,3 +135,13 @@ print(dados.head())
 
 dados['Valor_por_ano'] = dados['Valor_por_mes'] * 12 + dados['IPTU']
 print(dados.head())
+
+#criando colunas categóricas
+dados['Descricao'] = dados['Tipo'] + ' em ' + dados['Bairro'] + ' com ' + dados['Quartos'].astype(str) + ' quarto(s) ' + ' e ' + dados['Vagas'].astype(str) + ' vaga(s) de garagem.'
+print(dados.head())
+print(dados['Descricao'])
+
+dados['Possui_suite'] = dados['Suites'].apply(lambda x: "Sim" if x > 0 else "Não")
+print(dados.head())
+
+dados.to_csv('dados_completos_dev.csv', index=False, sep=';')
