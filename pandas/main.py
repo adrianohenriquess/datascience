@@ -125,3 +125,13 @@ print(pd.read_csv('dados_apartamentos.csv', sep=';'))
 
 df_1.to_csv('filtro_1.csv', index=False, sep=";")
 df_2.to_csv('filtro_2.csv', index=False, sep=";")
+
+#4 criando colunas numericas
+dados = pd.read_csv('aluguel.csv', sep=';')
+print(dados.head())
+
+dados['Valor_por_mes'] = dados['Valor'] + dados['Condominio']
+print(dados.head())
+
+dados['Valor_por_ano'] = dados['Valor_por_mes'] * 12 + dados['IPTU']
+print(dados.head())
