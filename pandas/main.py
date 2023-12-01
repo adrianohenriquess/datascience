@@ -68,6 +68,8 @@ print(df_imoveis_nao_comerciais.Tipo.value_counts(normalize=True))
 #converter a series em um data_frame
 print(df_imoveis_nao_comerciais.Tipo.value_counts(normalize=True).to_frame().sort_values('Tipo'))
 
+#normalize coloca os valores contados na coluna tipo em porcentagem
+#depois transforma em dataframe e ordena por Tipo
 df_percentual_tipo = df_imoveis_nao_comerciais.Tipo.value_counts(normalize=True).to_frame().sort_values('Tipo')
 #df_percentual_tipo.plot.bar(figsize=(14, 10), color = 'green',
 #                             xlabel = 'Tipos', ylabel = 'Percentual')
