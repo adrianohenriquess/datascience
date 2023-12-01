@@ -18,4 +18,7 @@ print(dados_primeiras_linhas)
 dados_selecao = pd.read_csv(url, usecols=[0, 1, 4])
 print(dados_selecao)
 
-dados_selecao.to_csv('clientes_mercado.csv')
+dados_selecao.to_csv('clientes_mercado.csv', index=False)
+
+clientes_mercado = pd.read_csv('clientes_mercado.csv')
+print(clientes_mercado.head())
