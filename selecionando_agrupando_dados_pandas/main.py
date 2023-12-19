@@ -28,3 +28,21 @@ emissoes_gases = emissoes_gases[emissoes_gases['Emissão / Remoção / Bunker'] 
 
 emissoes_gases = emissoes_gases.drop(columns = 'Emissão / Remoção / Bunker')
 print(emissoes_gases)
+
+colunas_info = list(emissoes_gases.loc[:,'Nível 1 - Setor':'Produto'].columns)
+print(colunas_info)
+
+colunas_emissao = list(emissoes_gases.loc[:,'1970':'2021'].columns)
+print(colunas_emissao)
+
+emissoes_gases_por_ano = emissoes_gases.melt(id_vars = colunas_info, value_vars = colunas_emissao, var_name = 'Ano', value_name = 'Emissão')
+print(emissoes_gases_por_ano)
+
+emissoes_gases_por_ano.groupby('Gás').groups
+emissoes_gases_por_ano.groupby('Gás').get_group('CO2 (t)')
+
+emissoes_gases_por_ano.groupby('Gás').sum(numeric_only = True)
+emissoes_gases_por_ano.groupby('Gás')[['Emissão']].sum()
+
+emissoes_gases_por_ano = emissoes_gases_por_ano.groupby('Gás')[['Emissão']].sum().sort_values('Emissão', ascending = False)
+print(emissoes_gases_por_ano)
