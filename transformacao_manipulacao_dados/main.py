@@ -26,4 +26,18 @@ dados['preco'] = dados['preco'].apply(lambda x: x.replace('$', '').replace(',', 
 dados['preco'] = dados['preco'].astype(np.float64)
 dados[['taxa_deposito', 'taxa_limpeza']] = dados[['taxa_deposito', 'taxa_limpeza']].map(lambda x: x.replace('$', '').replace(',', '').strip())
 
-print(dados.head())
+
+dados['descricao_local'] = dados['descricao_local'].str.lower()
+dados['descricao_local'] = dados['descricao_local'].str.replace('[^a-zA-Z0-9\-\']', ' ', regex = True)
+dados['descricao_local'] = dados['descricao_local'].str.replace('(?<!\w)-(?!\w)', ' ', regex = True)
+
+print(dados['descricao_local'])
+#str trata elemento a elemento como string
+dados['descricao_local'] = dados['descricao_local'].str.split()
+print(dados['descricao_local'])
+
+dados['comodidades'] = dados['comodidades'].str.replace('\{|}|\"', '', regex = True)
+print(dados['comodidades'])
+
+dados['comodidades'] = dados['comodidades'].str.split(',')
+print(dados['comodidades'])
