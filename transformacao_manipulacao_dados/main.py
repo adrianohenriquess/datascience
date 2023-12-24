@@ -2,7 +2,6 @@ import pandas as pd
 import numpy  as np
 
 url_dados_hospedagem = 'https://caelum-online-public.s3.amazonaws.com/2928-transformacao-manipulacao-dados/dados_hospedagem.json'
-url_dados_imoveis_disponiveis = 'https://caelum-online-public.s3.amazonaws.com/2928-transformacao-manipulacao-dados/moveis_disponiveis.json'
 
 dados = pd.read_json(url_dados_hospedagem)
 
